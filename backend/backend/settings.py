@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'rest_framework',
-
+    # les modules parametrage celery et api
     'core',
     'api',
 ]

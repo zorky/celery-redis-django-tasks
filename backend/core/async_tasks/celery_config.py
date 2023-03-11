@@ -8,6 +8,3 @@ task_serializer = 'json'
 result_serializer = 'json'
 accept_content = ['json']
 
-print(broker_url)
-print(result_backend)
-
