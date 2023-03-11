@@ -14,15 +14,15 @@ services:
     container_name: celery-worker
     command: celery -A core.async_tasks worker -l info
     depends_on:
-     - redis
+     - redis-broker
     networks:
      - api-and-worker
     volumes:
       - ../backend:/code
 
-  redis:
+  redis-broker:
     image: redis:7.0.8
-    container_name: redis
+    container_name: redis-broker
     ports:
       - "6379:6379"
     networks:
