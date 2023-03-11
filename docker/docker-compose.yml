@@ -1,0 +1,51 @@
+version: '3.1'
+services:
+  api-server:
+    image: api-and-worker
+    container_name: api-server
+    command: python3 manage.py runserver 0.0.0.0:8110
+    volumes:
+    - ../backend:/code
+    networks:
+    - api-and-worker
+
+  celery-worker:
+    image: api-and-worker
+    container_name: celery-worker
+    command: celery -A core.async_tasks worker -l info
+    depends_on:
+     - redis
+    networks:
+     - api-and-worker
+    volumes:
+      - ../backend:/code
+
+  redis:
+    image: redis:7.0.8
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - api-and-worker
+    volumes:
+      - redis_data:/data
+
+  nginx-plateform:
+    image: nginx
+    container_name: nginx-api-server
+    depends_on:
+      - api-server
+    ports:
+     - 80:80
+    networks:
+     - api-and-worker
+    volumes:
+     - ./nginx/conf.d/plateform.conf:/etc/nginx/conf.d/plateform.conf
+     - ../log/:/var/log/nginx/
+
+volumes:
+  redis_data:
+
+networks:
+  api-and-worker:
+
