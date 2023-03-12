@@ -1,4 +1,10 @@
-# Construire l'image du serveur d'applications : api-and-worker
+# Démonstration de Celery pour l'exécution de tâche en différé / asynchrones
+
+L'article qui parle de Celery, Celery _worker_, Redis dans un environnement Django 
+
+https://dev.to/zorky/celery-redis-execution-de-taches-en-differe-asynchrones-hhj
+
+## Construire l'image du serveur d'applications : api-and-worker
 
 Pré-requis : docker !
 
@@ -9,7 +15,7 @@ $ cd docker
 $ . ./build.sh
 ```
 
-# Nginx
+## Nginx
 
 Le frontal devant django est configuré sur un vhost "plateform", doit exister dans le /etc/hosts sur 127.0.0.1
 
@@ -17,13 +23,13 @@ Le frontal devant django est configuré sur un vhost "plateform", doit exister d
 127.0.0.1    plateform
 ```
 
-# Lancer le serveur d'applications et le worker
+## Lancer le serveur d'applications et le worker
 
 ```bash
 $ cd docker && docker-compose up
 ```
 
-# Exécuter la tâche
+## Exécuter la tâche
 
 par le navigateur http://plateform/api/execute_task/
 
