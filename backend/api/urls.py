@@ -4,5 +4,5 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^execute_task/$', views.SendMailApi.as_view(), name='execute_task')
+    url(r'^execute_task/$', views.ExecuteTaskApi.as_view())
 ]

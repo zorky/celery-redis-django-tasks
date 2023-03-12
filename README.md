@@ -25,5 +25,9 @@ $ cd docker && docker-compose up
 
 # Exécuter la tâche
 
-http://plateform/api/execute_task/
+par le navigateur http://plateform/api/execute_task/
+
+ou
+
+par curl `$ curl http://plateform/api/execute_task/`
 

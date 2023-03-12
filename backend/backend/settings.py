@@ -12,10 +12,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 from django.conf.global_settings import gettext_noop
+import logging
+logger = logging.getLogger('django')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -127,3 +128,38 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': True,
+        # 'disable_existing_loggers': False,
+        'formatters': {
+            'verbose': {
+                'format': '%(levelname)s %(module)s %(message)s'
+            },
+        },
+        'handlers': {
+            'console': {
+                'level': 'DEBUG',
+                'class': 'logging.StreamHandler',
+                'formatter': 'verbose'
+            }
+        },
+        'loggers': {
+            'django': {
+                'level': 'DEBUG',
+                'handlers': ['console'],
+                'propagate': True,
+            },
+            'django.db.backends': {
+                'level': 'ERROR',
+                'handlers': ['console'],
+                'propagate': False,
+            },
+            'django.utils.autoreload': {
+                'level': 'INFO',
+                'handlers': ['console'],
+                'propagate': False
+            },
+        },
+    }
