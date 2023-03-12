@@ -1,4 +1,4 @@
-# Démonstration de Celery pour l'exécution de tâche en différé / asynchrones
+# Démonstration de Celery pour l'exécution de tâches en différé / asynchrones
 
 L'article qui parle de Celery, Celery _worker_, Redis dans un environnement Django 
 
